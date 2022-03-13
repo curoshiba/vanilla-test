@@ -1,13 +1,46 @@
 import "./styles.css";
 
-document.getElementById("app").innerHTML = `
-<h1>Hello Vanilla!</h1>
-<div>
-  We use the same configuration as Parcel to bundle this sandbox, you can find more
-  info about Parcel 
-  <a href="https://parceljs.org" target="_blank" rel="noopener noreferrer">here</a>.
-</div>
-`;
+const onclikadd = () => {
+  const input_text = document.getElementById("add-text").value;
+  document.getElementById("add-text").value = "";
+
+  //div
+  const div = document.createElement("div");
+  div.className = "list-row";
+
+  //li
+  const li = document.createElement("li");
+  li.innerText = input_text;
+
+  const combutonn = document.createElement("button");
+  combutonn.innerText = "完了";
+  combutonn.addEventListener("click", () => {
+    const addtarget = combutonn.parentNode;
+    const text = addtarget.firstElementChild.innerHTML;
+
+    del_list(delbutonn.parentNode);
+  });
+
+  const delbutonn = document.createElement("button");
+  delbutonn.innerText = "削除";
+  delbutonn.addEventListener("click", () => {
+    del_list(delbutonn.parentNode);
+  });
+
+  div.appendChild(li);
+  div.appendChild(combutonn);
+  div.appendChild(delbutonn);
+
+  document.getElementById("imcomplete-list").appendChild(div);
+};
+
+const del_list = (target) => {
+  document.getElementById("imcomplete-list").removeChild(target);
+};
+
+document
+  .getElementById("add-button")
+  .addEventListener("click", () => onclikadd());
 
 /**
  * react覚えるべきこと
